@@ -1,0 +1,53 @@
+{
+  "app": {
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS"
+      }
+    ],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/greek.chen/.ohos/config/default_ohos_axios_L16iBoWLH_l2Vqdo9nXlNNz9xjYH9ALBlK9cAL8aZ7U=.cer",
+          "storePassword": "0000001BB67592D1929DA0B4BF13486E1A731756C6D9240898C243E4E51169462A043DD3E33FA365048527",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BE9FACEBD7AF1351F3049AD3BFAF986E4D30C74D23795420AA47DBF771DD8EBE8CE02ACA01A8757",
+          "profile": "/Users/greek.chen/.ohos/config/default_ohos_axios_L16iBoWLH_l2Vqdo9nXlNNz9xjYH9ALBlK9cAL8aZ7U=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/greek.chen/.ohos/config/default_ohos_axios_L16iBoWLH_l2Vqdo9nXlNNz9xjYH9ALBlK9cAL8aZ7U=.p12"
+        }
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "library",
+      "srcPath": "./library",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
