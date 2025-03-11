@@ -3,3 +3,5 @@
 /.preview
 /build
 /.cxx
+.DS_Store
+oh-package-lock.json5

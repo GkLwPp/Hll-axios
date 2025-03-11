@@ -12,7 +12,7 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
-import axios, { AxiosError, AxiosProgressEvent, AxiosResponse, FormData } from '@ohos/axios';
+import axios, { AxiosError, AxiosProgressEvent, AxiosResponse, CancelTokenSource, FormData } from '@ohos/axios';
 import fs from '@ohos.file.fs';
 import { IdModel, InfoModel, UploadModel } from '../types/types';
 import { DEMO_CONFIG, LOG } from '../common/Common';
@@ -442,10 +442,7 @@ struct Index {
       console.error("axios", "test post err:" + JSON.stringify(err))
     })
 
-    setTimeout(() => {
-      source.cancel("test axios cancel.....")
-      console.error("axios", "test get axios cancel")
-    }, 150)
+    this.mockAxiosCancel(source ,"test get axios cancel");
   }
 
   // post请求
@@ -479,10 +476,7 @@ struct Index {
       this.endTime = new Date().getTime();
     })
 
-    setTimeout(() => {
-      source.cancel("test post axios cancel.....")
-      console.error("axios", "test post axios cancel")
-    }, 150)
+    this.mockAxiosCancel(source, "test post axios cancel" )
   }
 
   // put请求
@@ -869,5 +863,12 @@ struct Index {
     this.status = '';
     this.startTime = 0;
     this.endTime = 0;
+  }
+
+  private mockAxiosCancel(source: CancelTokenSource, msg:string) {
+    setTimeout(() => {
+      // source.cancel("test axios cancel.....");
+      console.error("axios", msg);
+    }, 1500);
   }
 }

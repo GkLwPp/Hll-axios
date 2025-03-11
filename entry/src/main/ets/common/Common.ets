@@ -39,7 +39,7 @@ const XTS_CONFIG: Xts_config = {
 }
 // demo请求服务器url
 const DEMO_CONFIG: Demo_config = {
-  baseUrl: 'http://172.30.217.153:4000', // 基础请求地址
+  baseUrl: 'http://localhost:4000', // 基础请求地址
   getUrl: '/tpc/get', // get请求地址
   postUrl: '/tpc/post', // post请求地址
   putUrl: '/tpc/put',// put请求地址
