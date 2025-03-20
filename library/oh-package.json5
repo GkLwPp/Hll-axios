@@ -11,11 +11,11 @@
   "ohos": {
     "org": "opensource"
   },
-  "description": "Axios ，是一个基于 promise 的网络请求库。本库基于npm Axios 原库进行适配，使其可以运行在 OpenHarmony，并沿用其现有用法和特性。",
+  "description": "Hll-Axios 是一个基于Axios的网络请求库扩展了Rcp引擎的，并沿用其现有用法和特性。",
   "main": "index.js",
   "repository": "https://gitee.com/openharmony-sig/ohos_axios.git",
   "type": "module",
-  "version": "2.2.5-rc.2",
+  "version": "1.0.0-hll.5",
   "tags": [
     "Network"
   ],

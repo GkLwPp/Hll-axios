@@ -59,13 +59,13 @@ function download(httpConfig, resolve, reject) {
             }, function _reject(err) {
                 reject(err);
             }, realResponse);
-            session.close()
+            HllRcpSessionManager.releaseTmpSession(session)
         }).catch((err) => {
-            session.close()
+            HllRcpSessionManager.releaseTmpSession(session)
             reject(new AxiosError(err, AxiosError.ERR_BAD_RESPONSE, config, request, request));
         });
     } catch (err) {
-        session.close();
+        HllRcpSessionManager.releaseTmpSession(session)
         reject(new AxiosError(JSON.stringify(err), AxiosError.ERR_BAD_OPTION_VALUE, config, request, request));
     }
 }

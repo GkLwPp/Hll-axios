@@ -8,3 +8,5 @@
 /entry/.test
 /entry/src/main/resources/rawfile
 package-lock.json
+.DS_Store
+.clang-format

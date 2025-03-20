@@ -2,6 +2,7 @@ import buildURL from '../../../../lib/helpers/buildURL.js';
 import AxiosError from '../../../../lib/core/AxiosError';
 import buildFullPath from '../../../../lib/core/buildFullPath';
 import rcp from '@hms.collaboration.rcp';
+import HllRcpSessionManager from '../rcp/HllRcpSessionManager';
 import utils from '../../../utils';
 import buffer from '@ohos.buffer';
 
@@ -33,26 +34,11 @@ const convertAxiosConfigToRcp = (config, reject, eventHandler) => {
                 httpEventsHandler: eventHandler,
             },
             proxy: convertAxiosProxyToRcp(config),
-            // dns: {
-            //     dnsRules: [
-            //         { host: "https://example.com", port: 443, ipAddresses: ["192.168.1.1", "192.168.1.2"] }
-            //     ]
-            // },
         },
-        baseAddress: config.baseURL,
-        headers: config.headers,
-        // cookies: {
-        //     "user": "john_doe",
-        //     "session_id": "abc123",
-        // },
-        // sessionListener: {
-        //     onCanceled: () => console.warn("greek", "Session was cancelled"),
-        //     onClosed: () => console.warn("greek", "Session was closed"),
-        // },
     };
 
-    let session = rcp.createSession(sessionConfig)
-
+    // let session = rcp.createSession(sessionConfig)
+    let session = HllRcpSessionManager.getSession(sessionConfig)
     if (config.cancelToken) {
         config.cancelToken.promise.then(cancel => {
             if (session) {
@@ -100,13 +86,6 @@ const convertAxiosProxyToRcp = (config) => {
                 key: config.clientCert?.keyPath,
                 keyPassword: config.clientCert?.keyPasswd,
             },
-            // serverAuthentication: {
-            //     credential: {
-            //         username: "proxy-username",
-            //         password: "proxy-password",
-            //     },
-            //     authenticationType: "basic",
-            // },
         },
     };
 

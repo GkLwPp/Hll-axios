@@ -149,13 +149,13 @@ async function upload(httpConfig, resolve, reject) {
                     reject(err);
                 }, realResponse);
 
-                session.close()
+                HllRcpSessionManager.releaseTmpSession(session)
             }).catch((err) => {
-            session.close()
+            HllRcpSessionManager.releaseTmpSession(session)
             reject(new AxiosError(err, AxiosError.ERR_BAD_OPTION_VALUE, config, null, null));
         })
     } catch (err) {
-        session.close()
+        HllRcpSessionManager.releaseTmpSession(session)
         reject(new AxiosError(err, AxiosError.ERR_BAD_OPTION_VALUE, config, null, null));
     }
 }

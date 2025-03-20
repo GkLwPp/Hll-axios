@@ -16,6 +16,7 @@
 
 import settle from '../../../../lib/core/settle';
 import AxiosError from '../../../../lib/core/AxiosError';
+import HllRcpSessionManager from '../rcp/HllRcpSessionManager';
 
 export default (httpConfig, resolve, reject) => {
     try {
@@ -46,7 +47,7 @@ export default (httpConfig, resolve, reject) => {
             }, function _reject(err) {
                 reject(err);
             }, responseReal);
-            session.close()
+            HllRcpSessionManager.releaseTmpSession(session)
         }).catch((err) => {
             if (err.message === 'Failed writing received data to disk/application') {
                 return reject(new AxiosError(
@@ -56,11 +57,11 @@ export default (httpConfig, resolve, reject) => {
                     request
                 ));
             }
-            session.close()
+            HllRcpSessionManager.releaseTmpSession(session)
             reject(new AxiosError(JSON.stringify(err), err?.code, config, request, request));
         })
     } catch (e) {
-        session?.close()
+        HllRcpSessionManager.releaseTmpSession(session)
         reject(new AxiosError(JSON.stringify(e), e?.code, config, request, request));
     }
 }
